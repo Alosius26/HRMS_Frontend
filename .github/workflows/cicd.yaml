@@ -31,8 +31,8 @@ jobs:
       - name: Upload Build to VPS
         uses: appleboy/scp-action@v0.1.7
         with:
-          host: ${{ secrets.VPS_HOST }}
-          username: ${{ secrets.VPS_USER }}
+          host: ${{ secrets.TOMCAT_HOST }}
+          username: ${{ secrets.TOMCAT_USER }}
           key: ${{ secrets.SSH_PRIVATE_KEY }}
           source: "build/web/*"
           target: "/tmp/flutter-build"
@@ -40,8 +40,8 @@ jobs:
       - name: Deploy to Tomcat
         uses: appleboy/ssh-action@v1.1.0
         with:
-          host: ${{ secrets.VPS_HOST }}
-          username: ${{ secrets.VPS_USER }}
+          host: ${{ secrets.TOMCAT_HOST }}
+          username: ${{ secrets.TOMCAT_USER }}
           key: ${{ secrets.SSH_PRIVATE_KEY }}
           script: |
             sudo mkdir -p /opt/tomcat10/webapps/hrms
