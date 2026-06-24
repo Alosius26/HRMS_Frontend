@@ -26,7 +26,7 @@ jobs:
         run: flutter pub get
 
       - name: Build Flutter Web
-        run: flutter build web --release
+        run: flutter build web --release --base-href /hrms/
 
       - name: Upload Build to VPS
         uses: appleboy/scp-action@v0.1.7
